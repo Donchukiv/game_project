@@ -22,9 +22,16 @@ def hittest(bird, spikes_up, spikes_down, spikes_right, spikes_left):
 #New spikes appear (when bird changes its orientation)
 def Change_spikes(bird, spikes_right, spikes_left):
     if bird.orient == 1:
-        Draw_Spikes_right(spikes_right)
+        for i in range (len(spikes_right)):
+            spikes_right[i].work = random.choice(True, False)
+        for i in range (len(spikes_left)):
+            spikes_left[i].work = False
     if bird.orient == -1:
-        Draw_Spikes_left(spikes_left)
+        for i in range (len(spikes_left)):
+            spikes_left[i].work = random.choice(True, False)
+        for i in range (len(spikes_right)):
+            spikes_right[i].work = False
+
     
     
     
