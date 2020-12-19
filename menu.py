@@ -19,10 +19,10 @@ sc = pygame.display.set_mode((WIN_HEIGHT, WIN_WIDTH), pygame.RESIZABLE)
 pygame.init()
 
 class menu:
-	def __init__(self, x, y, h=5, w=20 click = False):
+	def __init__(self, x, y, h=5, w=20, click = False):
 		self.x = x
 		self.y = y
-		self.click = click
+		self.click = 
 
 
 	def create_button(self, x, y, h, w,):
@@ -30,6 +30,3 @@ class menu:
 
 	def click(self, event):
 		pass
-
-	def appear(self):
-		pygame.draw.rect(sc, LIGHT_BLUE, (self.x, self.y, 20+self.x, 10+self.y))
