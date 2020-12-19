@@ -51,9 +51,9 @@ def main():
 		
 		b.appear()
 		b.move()
-		game.Hittest(b, spikes_up, spikes_down, spikes_right, spikes_left)
-		game.Check_wall_hit(bird, spikes_right, spikes_left)
-		game.Change_spikes(bird, spikes_right, spikes_left)
+		
+		game.Check_wall_hit(b, spikes_right, spikes_left)
+		
 		spike.Draw_all_spikes(sc, spikes_up, spikes_down, spikes_right, spikes_left)
 		
 		pygame.display.update()

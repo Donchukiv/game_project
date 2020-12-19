@@ -35,7 +35,7 @@ def Change_spikes(bird, spikes_right, spikes_left):
 
 #Check if bird hits wall 
 def Check_wall_hit(bird, spikes_right, spikes_left):
-    if bird.x + bird.r == 400 or bird.x - bird.r == 0:
+    if bird.x + bird.r >= 400 or bird.x - bird.r <= 0:
         Change_spikes(bird, spikes_right, spikes_left)
         
     
