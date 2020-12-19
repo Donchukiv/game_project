@@ -10,15 +10,19 @@ YELLOW = (225, 225, 0)
 PINK = (230, 50, 230)
 ORANGE = (255, 150, 100)
 
-#objects
+#parametrs
 WIN_WIDTH = 500
 WIN_HEIGHT = 400
+
+#objects
+pygame.init()
 sc = pygame.display.set_mode((WIN_HEIGHT, WIN_WIDTH), pygame.RESIZABLE)
 
-pygame.init()
+
+
 
 class menu:
-	def __init__(self, x, y, h=5, w=20, click = False):
+	def __init__(self, x, y, h=50, w=100, click = False):
 		self.x = x
 		self.y = y
 		self.click = click
@@ -26,10 +30,14 @@ class menu:
 		self.w = w #width
 
 
-	def create_button(self):
-		pass
+	def create_button(self, x, y, w, h):
+		surf = pygame.Surface((h, w))
+		surf.fill(GREEN)
+		surf.set_alpha(150)
+		sc.blit(surf, (x, y))
 
-	def click(self):
+
+	def clickbyte(self):
 		for i in pygame.event.get():
 			if i.type == pygame.QUIT:
 				exit()
@@ -37,24 +45,26 @@ class menu:
 				self.click = True
 		
 
-start = menu(50, 60)
+start = menu(150, 100)
 
-def main_menu():
-	while click == False:
+
+def main():
+		
+	while 1:
 		sc.fill(LIGHT_BLUE)#window
 
 		for i in pygame.event.get():
 			if i.type == pygame.QUIT:
 				exit()
-
 		pygame.time.delay(20) #50 FPS
 
-		start.create_button()
+		start.create_button(start.x, start.y, start.h, start.w)
+		start.clickbyte()
 
 		pygame.display.update()
+		
 
 
 
-
-if __name__ == '__main_menu__':
-	main_menu()
+if __name__ == '__main__':
+	main()
