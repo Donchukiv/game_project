@@ -35,12 +35,14 @@ class menu:
 		surf = pygame.Surface((h, w))
 		surf.fill(GREEN)
 		surf.set_alpha(150)
-		sc.blit(surf, (x, y))
+		place = surf.get_rect(center=(x, y))
+		sc.blit(surf, place)
 
 	def create_title(self, text, x, y):
 		text_font = pygame.font.SysFont('arial', 36) #choosing text style
 		title = text_font.render(text, 1, (0,0,0)) #rendering text(text, smoothing, color)
-		sc.blit(title, (x, y))
+		place = title.get_rect(center=(x, y))
+		sc.blit(title, place)
 
 		#check if button was tapped
 	def clickbyte(self):
@@ -51,9 +53,9 @@ class menu:
 				self.click = True
 		
 #menu buttons and their coords, titles
-start = menu(100, 100, 'START')
-options = menu(100, 175, 'OPTIONS')
-settings = menu(100, 250, 'SETTINGS')
+start = menu(200, 100, 'START')
+options = menu(200, 175, 'OPTIONS')
+exit = menu(200, 250, 'EXIT')
 
 #running menu function
 def main():
@@ -69,11 +71,15 @@ def main():
 		start.create_button(start.x, start.y, start.h, start.w)
 		start.create_title(start.text, start.x, start.y)
 		start.clickbyte()
-		#print(not start.click) - working!
+		#print(not start.click) -  clickbyte is working!
 
 		options.create_button(options.x, options.y, options.h, options.w)
 		options.create_title(options.text, options.x, options.y)
 		options.clickbyte()
+
+		exit.create_button(exit.x, exit.y, exit.h, exit.w)
+		exit.create_title(exit.text, exit.x, exit.y)
+		exit.clickbyte()
 
 		pygame.display.update()
 		
