@@ -27,12 +27,9 @@ class bird:
 		self.vy = vy
 		self.r = r
 		self.color = color
-		#self.id = pygame.draw.circle(sc, color, (x, y), r)
+		self.id = pygame.draw.circle(sc, color, (x, y), r)
 		self.live = 1
 		self.orient = orient
-
-	def appear(self):
-		pygame.draw.circle(sc, self.color, (self.x, self.y), self.r)
 
 	def move(self):
 		while self.live == 1:
