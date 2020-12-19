@@ -22,21 +22,27 @@ sc = pygame.display.set_mode((WIN_HEIGHT, WIN_WIDTH), pygame.RESIZABLE)
 
 
 class menu:
-	def __init__(self, x, y, h=50, w=100, click = False):
+	def __init__(self, x, y, text, h=50, w=200, click = False):
 		self.x = x
 		self.y = y
-		self.click = click
+		self.click = click #if button was tapped indicator
 		self.h = h #height
 		self.w = w #width
+		self.text = text
 
-
+		# button creation(figure)
 	def create_button(self, x, y, w, h):
 		surf = pygame.Surface((h, w))
 		surf.fill(GREEN)
 		surf.set_alpha(150)
 		sc.blit(surf, (x, y))
 
+	def create_title(self, text, x, y):
+		text_font = pygame.font.SysFont('arial', 36) #choosing text style
+		title = text_font.render(text, 1, (0,0,0)) #rendering text(text, smoothing, color)
+		sc.blit(title, (x, y))
 
+		#check if button was tapped
 	def clickbyte(self):
 		for i in pygame.event.get():
 			if i.type == pygame.QUIT:
@@ -44,10 +50,12 @@ class menu:
 			elif i.type == pygame.MOUSEBUTTONDOWN:
 				self.click = True
 		
+#menu buttons and their coords, titles
+start = menu(100, 100, 'START')
+options = menu(100, 175, 'OPTIONS')
+settings = menu(100, 250, 'SETTINGS')
 
-start = menu(150, 100)
-
-
+#running menu function
 def main():
 		
 	while 1:
@@ -59,7 +67,13 @@ def main():
 		pygame.time.delay(20) #50 FPS
 
 		start.create_button(start.x, start.y, start.h, start.w)
+		start.create_title(start.text, start.x, start.y)
 		start.clickbyte()
+		#print(not start.click) - working!
+
+		options.create_button(options.x, options.y, options.h, options.w)
+		options.create_title(options.text, options.x, options.y)
+		options.clickbyte()
 
 		pygame.display.update()
 		
