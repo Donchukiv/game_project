@@ -43,12 +43,14 @@ class bird:
 				self.vx = (-1)*self.vx
 				self.orient = (-1) 
 			#y velocity gets 10 up after the click
-			'''
+
 			for i in pygame.event.get():
-				if i.type == pygame.KEYDOWN:
-					if i.key == pygame.K_UP:
-						self.vy = 5
-'''
+                                if i.type == pygame.QUIT:
+                                        exit()
+                                elif i.type == pygame.KEYDOWN:
+                                        if i.key == pygame.K_UP:
+                                                self.vy = -10
+
 	def death(self):
 		if hittest():
 			#self.live = 0
