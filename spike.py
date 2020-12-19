@@ -1,5 +1,4 @@
 import pygame
-import random
 pygame.init()
 
 GRAY = (125, 125, 125)
@@ -21,10 +20,10 @@ class Spike:
             spike = pygame.draw.polygon(sc, GRAY, [[self.x, self.y], [self.x + 20, self.y + 40],
                                                      [self.x - 20, self.y + 40]])
         if self.orient == 'left':
-            spike = pygame.draw.polygon(sc, GRAY, [[self.x - 40, self.y], [self.x, self.y + 20],
+            spike = pygame.draw.polygon(sc, GRAY, [[self.x + 40, self.y], [self.x, self.y + 20],
                                                      [self.x, self.y - 20]])
         if self.orient == 'right':
-            spike = pygame.draw.polygon(sc, GRAY, [[self.x + 40, self.y], [self.x, self.y + 20],
+            spike = pygame.draw.polygon(sc, GRAY, [[self.x - 40, self.y], [self.x, self.y + 20],
                                                      [self.x, self.y - 20]])
 
 #Add spikes into lists (up, down)
@@ -38,11 +37,11 @@ def Create_spikes_up_down(spikes_up, spikes_down):
 
 #Add spikes into lists (right, left)
 def Create_spikes_right_left(spikes_right, spikes_left):
-    for i in range (20, 520, 40):
-            spike = Spike(40, i, 'left', False)
+    for i in range (50, 490, 40):
+            spike = Spike(0, i, 'left', False)
             spikes_left.append(spike)
-    for i in range (20, 520, 40):
-            spike = Spike(360, i, 'right', False)
+    for i in range (50, 490, 40):
+            spike = Spike(400, i, 'right', False)
             spikes_right.append(spike)
 
 #Create lists of spikes
