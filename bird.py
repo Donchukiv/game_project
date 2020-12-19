@@ -49,7 +49,7 @@ class bird:
                                         exit()
                                 elif i.type == pygame.KEYDOWN:
                                         if i.key == pygame.K_UP:
-                                                self.vy = -10
+                                                self.vy = -20
 
 	def death(self):
 		if hittest():
