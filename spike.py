@@ -25,26 +25,36 @@ class Spike:
             spike = pygame.draw.polygon(sc, 'grey', [[self.x + 40, self.y], [self.x, self.y + 20],
                                                      [self.x, self.y - 20]])
 
+#Create empty lists for spikes
+spikes_up = []
+spikes_down = []
+spikes_left = []
+spikes_right = []
+
+#Add spikes into lists (up, down)
+def Create_spikes_up_down(spikes_up, spikes_down):
+    for i in range (20, 420, 40):
+            spike = Spike(i, 40, 'up', True)
+            spikes_up.append(spike)
+    for i in range (20, 420, 40):
+            spike = Spike(i, 460, 'down', True)
+            spikes_down.append(spike)
+
+#Add spikes into lists (right, left)
+def Create_spikes_right_left(spikes_right, spikes_left):
+    for i in range (20, 520, 40):
+            spike = Spike(40, i, 'left', False)
+            spikes_left.append(spike)
+    for i in range (20, 520, 40):
+            spike = Spike(360, i, 'right', False)
+            spikes_right.append(spike)
+
 #Create lists of spikes
-def Create_Spikes():
-    global spikes_up = [], spikes_down = [], spikes_left = [], spikes_right = []
-
-    def Create_spikes_up_down(spikes_up, spikes_down):
-        for i in range (20, 420, 40):
-                spike = Spike(i, 40, 'up', True)
-                spikes_up.append(spike)
-        for i in range (20, 420, 40):
-                spike = Spike(i, 460, 'down', True)
-                spikes_down.append(spike)
-
-    def Create_spikes_right_left(spikes_right, spikes_left):
-        for i in range (20, 520, 40):
-                spike = Spike(40, i, 'left', False)
-                spikes_left.append(spike)
-        for i in range (20, 520, 40):
-                spike = Spike(360, i, 'right', False)
-                spikes_right.append(spike)
-
+def Create_Spikes(spikes_up, spikes_down, spikes_right, spikes_left):
     Create_spikes_up_down(spikes_up, spikes_down)
     Create_spikes_right_left(spikes_right, spikes_left)
+
+def Draw_Spikes_up_down(spikes_up, spikes_down):
+    pass
+
     
