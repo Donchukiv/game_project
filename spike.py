@@ -54,15 +54,23 @@ def Create_Spikes(spikes_up, spikes_down, spikes_right, spikes_left):
     Create_spikes_up_down(spikes_up, spikes_down)
     Create_spikes_right_left(spikes_right, spikes_left)
 
-#Draw all spikes
-def Draw_all_spikes(spikes_up, spikes_down):
+#Draw spikes up and down
+def Draw_Spikes_up_down(spikes_up, spikes_down):
     for i in range (len(spikes_up)):
         spikes_up[i].draw()
     for i in range (len(spikes_down)):
         spikes_down[i].draw()
+
+#Draw random spikes on the right    
+def Draw_Spikes_right(spikes_right):
     for i in range (len(spikes_right)):
+        spikes_right[i].work = random.choice(True, False)
         if spikes_right[i].work == True:
             spikes_right[i].draw()
+
+#Draw random spikes on the left
+def Draw_Spikes_left(spikes_left):
     for i in range (len(spikes_left)):
+        spikes_left[i].work = random.choice(True, False)
         if spikes_left[i].work == True:
             spikes_left[i].draw()

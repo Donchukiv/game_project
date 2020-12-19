@@ -3,6 +3,7 @@ import pygame
 import spike
 import bird
 import menu
+import game
 import sys
 
 #colors
@@ -27,6 +28,9 @@ sc = pygame.display.set_mode((WIN_HEIGHT, WIN_WIDTH), pygame.RESIZABLE)
 b = bird.bird(40, 80)
 
 
+
+
+
 def main():
 	sc.fill(WHITE)#window
 
@@ -40,10 +44,11 @@ def main():
 		pygame.time.delay(20) #50 FPS
 
 		b.appear()
+		b.move()
 
 		pygame.display.update()
 
-		b.move()
+		
 
 
 		
