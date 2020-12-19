@@ -55,7 +55,7 @@ class menu:
 #menu buttons and their coords, titles
 start = menu(200, 100, 'START')
 options = menu(200, 175, 'OPTIONS')
-exit = menu(200, 250, 'EXIT')
+settings = menu(200, 250, 'SETTINGS')
 
 #running menu function
 def main():
@@ -77,9 +77,9 @@ def main():
 		options.create_title(options.text, options.x, options.y)
 		options.clickbyte()
 
-		exit.create_button(exit.x, exit.y, exit.h, exit.w)
-		exit.create_title(exit.text, exit.x, exit.y)
-		exit.clickbyte()
+		settings.create_button(settings.x, settings.y, settings.h, settings.w)
+		settings.create_title(settings.text, settings.x, settings.y)
+		settings.clickbyte()
 
 		pygame.display.update()
 		
