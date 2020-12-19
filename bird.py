@@ -41,7 +41,7 @@ class bird:
 			self.vy = self.vy + 1
 			if self.x + self.r >= WIN_HEIGHT or self.x - self.r <= 0:
 				self.vx = (-1)*self.vx
-				self.orient = (-1)*self.orient 
+				self.orient = (-1) 
 			#y velocity gets 10 up after the click
 
 			for i in pygame.event.get():
