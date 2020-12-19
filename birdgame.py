@@ -3,6 +3,7 @@ import pygame
 import spike
 import bird
 import menu
+import sys
 
 #colors
 WHITE =(255,255,255)
@@ -33,13 +34,19 @@ def main():
 		sc.fill(WHITE)#window
 
 		for i in pygame.event.get():
-			if i.type == pygame.QUIT: exit()
+			if i.type == pygame.QUIT:
+				exit()
 
 		pygame.time.delay(20) #50 FPS
+
+		b.appear()
 
 		pygame.display.update()
 
 		b.move()
+
+
+		
 
 
 if __name__ == '__main__':
