@@ -5,6 +5,7 @@ import bird
 import menu
 import game
 import sys
+import random
 
 #colors
 WHITE =(255,255,255)
@@ -27,9 +28,13 @@ pygame.init()
 sc = pygame.display.set_mode((WIN_HEIGHT, WIN_WIDTH), pygame.RESIZABLE)
 b = bird.bird(40, 80)
 
+#Create empty lists for spikes
+spikes_up = []
+spikes_down = []
+spikes_left = []
+spikes_right = []
 
-
-
+spike.Create_Spikes(spikes_up, spikes_down, spikes_right, spikes_left)
 
 def main():
 	sc.fill(WHITE)#window
@@ -41,13 +46,18 @@ def main():
 			if i.type == pygame.QUIT:
 				exit()
 
+
 		pygame.time.delay(20) #50 FPS
 
 		b.appear()
 		b.move()
-
+		
+		game.Hittest(b, spikes_up, spikes_down, spikes_right, spikes_left)
+                game.Check_wall_hit(b, spikes_right, spikes_left)
+                
+                spike.Draw_all_spikes(sc, spikes_up, spikes_down, spikes_right, spikes_left)
+                
 		pygame.display.update()
-
 
 if __name__ == '__main__':
 	main()
