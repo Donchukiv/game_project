@@ -20,7 +20,7 @@ sc = pygame.display.set_mode((WIN_HEIGHT, WIN_WIDTH), pygame.RESIZABLE)
 pygame.init()
 
 class bird:
-	def __init__(self, x, y, r=25, color=ORANGE, vx=10, vy=0, orient = 1):
+	def __init__(self, x, y, r=50, color=ORANGE, vx=20, vy=0, orient = 1):
 		self.x = x
 		self.y = y
 		self.vx = vx
@@ -39,7 +39,7 @@ class bird:
 			self.x = self.x + self.vx
 			self.y = self.y + self.vy
 			self.vy = self.vy + 1
-			if self.x + self.r >= WIN_HEIGHT or self.x - self.r <= 0:
+			if self.x + self.r >= WIN_WIDTH or self.x - self.r <= 0:
 				self.vx = (-1)*self.vx
 				self.orient = (-1) 
 			#y velocity gets 10 up after the click
@@ -49,7 +49,7 @@ class bird:
                                         exit()
                                 elif i.type == pygame.KEYDOWN:
                                         if i.key == pygame.K_UP:
-                                                self.vy = -15
+                                                self.vy = -10
 
 	def death(self):
 		if hittest():

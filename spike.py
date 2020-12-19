@@ -2,8 +2,6 @@ import pygame
 import random
 pygame.init()
 
-GRAY = (125, 125, 125)
-
 class Spike:
 #Orient - orientation of spike's peak, work - True/False, spike is seen or not.
     def __init__(self, x, y, orient, work):
@@ -13,19 +11,25 @@ class Spike:
         self.work = work
 
 #Draw spike (triangle), (self.x, self.y) - coords of spike's peak
-    def draw(self, sc):
+    def draw(self):
         if self.orient == 'up':
-            spike = pygame.draw.polygon(sc, GRAY, [[self.x, self.y], [self.x + 20, self.y - 40],
+            spike = pygame.draw.polygon(sc, 'grey', [[self.x, self.y], [self.x + 20, self.y - 40],
                                                     [self.x - 20, self.y - 40]])
         if self.orient == 'down':
-            spike = pygame.draw.polygon(sc, GRAY, [[self.x, self.y], [self.x + 20, self.y + 40],
+            spike = pygame.draw.polygon(sc, 'grey', [[self.x, self.y], [self.x + 20, self.y + 40],
                                                      [self.x - 20, self.y + 40]])
         if self.orient == 'left':
-            spike = pygame.draw.polygon(sc, GRAY, [[self.x - 40, self.y], [self.x, self.y + 20],
+            spike = pygame.draw.polygon(sc, 'grey', [[self.x - 40, self.y], [self.x, self.y + 20],
                                                      [self.x, self.y - 20]])
         if self.orient == 'right':
-            spike = pygame.draw.polygon(sc, GRAY, [[self.x + 40, self.y], [self.x, self.y + 20],
+            spike = pygame.draw.polygon(sc, 'grey', [[self.x + 40, self.y], [self.x, self.y + 20],
                                                      [self.x, self.y - 20]])
+
+#Create empty lists for spikes
+spikes_up = []
+spikes_down = []
+spikes_left = []
+spikes_right = []
 
 #Add spikes into lists (up, down)
 def Create_spikes_up_down(spikes_up, spikes_down):
@@ -51,14 +55,14 @@ def Create_Spikes(spikes_up, spikes_down, spikes_right, spikes_left):
     Create_spikes_right_left(spikes_right, spikes_left)
 
 #Draw all spikes
-def Draw_all_spikes(sc, spikes_up, spikes_down, spikes_right, spikes_left):
+def Draw_all_spikes(spikes_up, spikes_down):
     for i in range (len(spikes_up)):
-        spikes_up[i].draw(sc)
+        spikes_up[i].draw()
     for i in range (len(spikes_down)):
-        spikes_down[i].draw(sc)
+        spikes_down[i].draw()
     for i in range (len(spikes_right)):
         if spikes_right[i].work == True:
-            spikes_right[i].draw(sc)
+            spikes_right[i].draw()
     for i in range (len(spikes_left)):
         if spikes_left[i].work == True:
-            spikes_left[i].draw(sc)
+            spikes_left[i].draw()
