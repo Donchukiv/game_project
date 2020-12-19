@@ -27,12 +27,6 @@ class Spike:
             spike = pygame.draw.polygon(sc, GRAY, [[self.x + 40, self.y], [self.x, self.y + 20],
                                                      [self.x, self.y - 20]])
 
-#Create empty lists for spikes
-spikes_up = []
-spikes_down = []
-spikes_left = []
-spikes_right = []
-
 #Add spikes into lists (up, down)
 def Create_spikes_up_down(spikes_up, spikes_down):
     for i in range (20, 420, 40):
