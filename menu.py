@@ -12,12 +12,13 @@ PINK = (230, 50, 230)
 ORANGE = (255, 150, 100)
 
 #parametrs
-WIN_WIDTH = 400
-WIN_HEIGHT = 500
+WIN_WIDTH = 500
+WIN_HEIGHT = 400
 
 #objects
 pygame.init()
-sc = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT), pygame.RESIZABLE)
+sc = pygame.display.set_mode((WIN_HEIGHT, WIN_WIDTH), pygame.RESIZABLE)
+
 
 
 
@@ -43,23 +44,18 @@ class menu:
 		self.title = text_font.render(text, 1, (0,0,0)) #rendering text(text, smoothing, color)
 		place = self.title.get_rect(center=(x, y))
 		sc.blit(self.title, place)
-		
-	def clickable_square(self, x, y):
-		pos = pygame.mouse.get_pos()
-		if pos[0] >= x-100 and pos[0] <= x+100 and pos[1] <= y+25 and pos[1] >= y-25:
-			return True
-			
+
 		#check if button was tapped
 	def clickbyte(self):
 		for i in pygame.event.get():
 			if i.type == pygame.QUIT:
 				exit()
-			if i.type == pygame.MOUSEBUTTONDOWN and self.clickable_square(self.x, self.y):
+			if i.type == pygame.MOUSEBUTTONDOWN:
 				if i.button == 1:
 					self.click = True
 		
 #menu buttons and their coords, titles
-start = menu(200, 100, 'START') #(center x, center y, title)
+start = menu(200, 100, 'START')
 options = menu(200, 175, 'OPTIONS')
 exit = menu(200, 250, 'EXIT')
 
@@ -95,8 +91,8 @@ def main():
 			options.main()
 			print(options.click)
 		elif start.click == True:
-			birdgame.main()
-			print(pygame.mouse.get_pos())
+			#birdgame.main()
+			print(start.click, 'start')
 
 		pygame.display.update()
 		
