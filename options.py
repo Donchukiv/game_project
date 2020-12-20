@@ -22,3 +22,9 @@ sc = pygame.display.set_mode((WIN_HEIGHT, WIN_WIDTH), pygame.RESIZABLE)
 class Options(menu):
 	def __init__(self):
 		super().__init__(x, y, text, h, w, click)
+
+
+
+def main():
+	while 1:
+		pass

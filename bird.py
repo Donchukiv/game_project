@@ -1,5 +1,6 @@
 #modules
 import pygame
+#import death
 
 #colors
 WHITE =(255,255,255)
@@ -42,16 +43,15 @@ class bird:
 			if self.x + self.r >= WIN_HEIGHT or self.x - self.r <= 0:
 				self.vx = (-1)*self.vx
 				self.orient = (-1)*self.orient 
+			
 			#y velocity gets 10 up after the click
-
 			for i in pygame.event.get():
                                 if i.type == pygame.QUIT:
                                         exit()
                                 elif i.type == pygame.KEYDOWN:
                                         if i.key == pygame.K_UP:
                                                 self.vy = -15
-
 	def death(self):
-		if hittest():
-			#self.live = 0
-			print('YOU DIED')
+		if self.live == 0:
+			#self.death()
+			print('YOU DIED') #- working!

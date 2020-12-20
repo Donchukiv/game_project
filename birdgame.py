@@ -5,10 +5,11 @@ import bird
 import game
 import sys
 
+
 #colors
 WHITE =(255,255,255)
 BLACK = (0,0,0) 
-GRAY = (125, 125, 125)
+GREY = (125, 125, 125)
 LIGHT_BLUE = (64, 128, 255)
 GREEN = (0, 200, 64)
 YELLOW = (225, 225, 0)

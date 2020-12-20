@@ -1,5 +1,6 @@
 #modules
 import pygame
+import menu
 
 #colors
 WHITE =(255,255,255)

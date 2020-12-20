@@ -82,6 +82,8 @@ def main():
 		exit.create_title(exit.text, exit.x, exit.y)
 		exit.clickbyte()
 
+
+		#почему-то сюда не доходит цикл
 		if exit.click == True:
 			for i in pygame.event.get():
 				exit()
