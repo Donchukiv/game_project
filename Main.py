@@ -26,11 +26,12 @@ class Game:
 		self.pos = pygame.mouse.get_pos()
 		self.events = []
 		self.image1 = pygame.Surface((50,50), pygame.SRCALPHA)
-		self.image1.fill((0,0,0,0))
+		#self.image1.fill((0,0,0,0))
 		self.image2 = pygame.Surface((50,50))
 		self.image = self.image1
-		pygame.draw.circle(self.image1, BLUE, (25,25), 25) #!!!!!!!!!!!
-		self.image2.fill(ORANGE)
+		self.color = RED
+		pygame.draw.circle(self.image1, self.color, (25,25), 25) #!!!!!!!!!!!
+		self.image2.fill(self.color)
 
 
 	def draw(self):
