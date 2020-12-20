@@ -1,21 +1,22 @@
 import pygame
-# import birdgame
 import sys
 from Optionspage import Optionspage
 from Button import Button
 
-LIGHT_BLUE = (64, 128, 255)
-GREEN = (0, 200, 64)
+L_RED = (255, 0, 255)
+L_YELLOW = (255, 255, 0)
+L_BLUE = (0, 255, 255)
 
-
-
+aL_RED = (255, 175, 255)
+aL_YELLOW = (255, 255, 175)
+aL_BLUE = (175, 255, 255)
 
 class Menupage:
 	def __init__(self, game):
 		self.game = game
-		self.start = Button(self.game, 200, 100, 'START')
-		self.options = Button(self.game, 200, 175, 'OPTIONS')
-		self.exit = Button(self.game, 200, 250, 'EXIT')
+		self.start = Button(self.game, 200, 125, L_RED, aL_RED, 'START', alpha = 255)
+		self.options = Button(self.game, 200, 250, L_YELLOW, aL_YELLOW, 'OPTIONS', alpha = 255)
+		self.exit = Button(self.game, 200, 375, L_BLUE, aL_BLUE, 'EXIT', alpha = 255)
 
 
 	def draw(self):

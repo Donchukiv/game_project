@@ -1,5 +1,6 @@
 #modules
 import pygame
+import random
 import spike
 import bird
 import game
@@ -8,15 +9,18 @@ from candy import candy
 
 
 #colors
-WHITE =(255,255,255)
-BLACK = (0,0,0) 
-GREY = (125, 125, 125)
-LIGHT_BLUE = (64, 128, 255)
-GREEN = (0, 200, 64)
-YELLOW = (225, 225, 0)
-PINK = (230, 50, 230)
-ORANGE = (255, 150, 100)
-BLUE = (0, 70, 225)
+YELLOW = (241, 224, 14)
+ORANGE = (255, 128, 0)
+RED = (236, 19, 19)
+GREEN = (26, 225, 105)
+LIGHT_BLUE = (31, 220, 216)
+BLUE = (22, 48, 228)
+PINK = (255, 0, 128)
+PURPLE = (151, 16, 216)
+
+PASTEL = (229, 229, 229)
+
+COLORS = [YELLOW, ORANGE, RED, GREEN, LIGHT_BLUE, BLUE, PINK, PURPLE]
 
 #parametrs
 FPS = 50
@@ -26,7 +30,6 @@ WIN_HEIGHT = 500
 #objects
 #pygame.init()
 sc = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT), pygame.RESIZABLE)
-
 
 b = bird.bird(40, 80)
 
@@ -42,13 +45,15 @@ score = []
 
 #All for candy
 candyscore = []
-cx = 150
-cy = 150
-ccolor = GREEN
+cx = random.randint(60, 340)
+cy = random.randint(60, 440)
+ccolor_1 = random.choice(COLORS)
+ccolor_2 = random.choice(COLORS)
+while ccolor_1 == ccolor_2:
+	ccolor_2 = random.choice(COLORS)
 clive = 1
-game.New_candy()
 
-c = candy(cx, cy, ccolor)
+c = candy(cx, cy, ccolor_1, ccolor_2)
 
 def main():
 
@@ -57,7 +62,7 @@ def main():
 		for i in pygame.event.get():
 			if i.type == pygame.QUIT:
 				exit() 
-		sc.fill(WHITE)#window
+		sc.fill(PASTEL)#window
 		pygame.time.delay(20) #50 FPS
 
 
@@ -71,7 +76,7 @@ def main():
 			if i.type == pygame.KEYUP:
 				if i.key == pygame.K_SPACE:
 					while 1:
-						sc.fill(WHITE)#window
+						sc.fill(PASTEL)#window
 						game.Show_score(score, candyscore, sc)
 						pygame.time.delay(20) #50 FPS
 						game.Hittest(b, spikes_up, spikes_down, spikes_right, spikes_left)

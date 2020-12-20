@@ -5,16 +5,19 @@ import random
 import candy
 
 #colors
-WHITE =(255,255,255)
-BLACK = (0,0,0) 
-GREY = (125, 125, 125)
-LIGHT_BLUE = (64, 128, 255)
-GREEN = (0, 200, 64)
-YELLOW = (225, 225, 0)
-PINK = (230, 50, 230)
-ORANGE = (255, 150, 100)
+YELLOW = (241, 224, 14)
+ORANGE = (255, 128, 0)
+RED = (236, 19, 19)
+GREEN = (26, 225, 105)
+LIGHT_BLUE = (31, 220, 216)
+BLUE = (22, 48, 228)
+PINK = (255, 0, 128)
+PURPLE = (151, 16, 216)
 
-pygame.init()
+PASTEL = (229, 229, 229)
+GRAY = (111, 111, 111)
+
+COLORS = [YELLOW, ORANGE, RED, GREEN, LIGHT_BLUE, BLUE, PINK, PURPLE]
 
 #Check if bird hits spike
 def Hittest(bird, spikes_up, spikes_down, spikes_right, spikes_left):
@@ -103,15 +106,15 @@ def Death(bird, Dead):
 def Show_score(score, candyscore, sc):
     text_s = str(len(score))
     text_c = 'You\'ve collected ' + str(len(candyscore)) + ' candies!'
-    surf = pygame.Surface((250, 280))
-    surf.fill((255, 255, 255))
+    surf = pygame.Surface((280, 280))
+    surf.fill(PASTEL)
     surf.set_alpha(220)
 
     text_font = pygame.font.SysFont('arial', 300) 
     title = text_font.render(text_s, 1, (0, 0, 0))
 
     text_font_c = pygame.font.SysFont('arial', 30) 
-    title_c = text_font_c.render(text_c, 1, (255, 0, 0))
+    title_c = text_font_c.render(text_c, 1, GRAY)
 
     place_t = title.get_rect(center=(200, 250))
     place_s = surf.get_rect(center=(200, 250))
@@ -124,7 +127,7 @@ def Show_score(score, candyscore, sc):
 #Check if bird hits candy
 def Hit_candy(candy, bird, candyscore):
     if bird.shape == 1:
-        if (candy.x - bird.x)**2 + (candy.y - bird.y)**2 <= (bird.r + candy.r)**2:
+        if (candy.x - bird.x)**2 + (candy.y - bird.y)**2 <= (bird.r + candy.r1)**2:
             candyscore.append(1)
             candy.live = 0
 
@@ -135,20 +138,24 @@ def Hit_candy(candy, bird, candyscore):
 
 #Generates parametres of new candy
 def New_candy():
-    global cx, cy, ccolor, clive
+    global cx, cy, ccolor_1, ccolor_2, clive
     cx = random.randint(60, 340)
     cy = random.randint(60, 440)
-    ccolor = random.choice([LIGHT_BLUE, GREEN, YELLOW, PINK, ORANGE])
+    ccolor_1 = random.choice(COLORS)
+    ccolor_2 = random.choice(COLORS)
+    while ccolor_1 == ccolor_2:
+        ccolor_2 = random.choice(COLORS)
     clive = 1
 
 #Creates new candy
 def Plus_candy(candy):
-    global cx, cy, ccolor, clive
+    global cx, cy, ccolor_1, ccolor_2, clive
     if candy.live == 0:
         New_candy()
         candy.x = cx
         candy.y = cy
-        candy.color = ccolor
+        candy.color_1 = ccolor_1
+        candy.color_2 = ccolor_2
         candy.live = 1
 
 

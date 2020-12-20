@@ -1,16 +1,12 @@
 from Button import Button
 
-GREY = (125, 125, 125)
-
-
 class Optionspage:
 	def __init__(self, game):
 		self.game = game
-		self.form1 = Button(self.game, 150, 100, image = self.game.image1, w=50, alpha = 0)
-		self.form2 = Button(self.game, 250, 100, image = self.game.image2, w = 50)
-		self.level = Button(self.game, 200, 175)
-		self.back = Button(self.game, 200, 250, 'BACK')
-
+		self.form1 = Button(self.game, 150, 100, (0, 0, 0), (0, 0, 0), image = self.game.image1, w=50, alpha = 0)
+		self.form2 = Button(self.game, 250, 100, (0, 0, 0), (0, 0, 0), image = self.game.image2, w = 50)
+		self.level = Button(self.game, 200, 175, (0, 0, 0), (0, 0, 0))
+		self.back = Button(self.game, 200, 250, (0, 0, 0), (0, 0, 0), 'BACK')
 
 	def draw(self):
 		self.form1.draw()

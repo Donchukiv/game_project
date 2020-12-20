@@ -1,8 +1,6 @@
 #modules
 import pygame
 
-#import death
-
 #colors
 WHITE =(255,255,255)
 BLACK = (0,0,0) 
@@ -30,7 +28,6 @@ class bird:
 		self.vy = vy
 		self.r = r
 		self.color = color
-		#self.id = pygame.draw.circle(sc, color, (x, y), r)
 		self.live = 1
 		self.orient = orient #orient = 1 => right, orient = -1 => left
 		self.shape = shape #shape = 1 => circle, shape = 2 => square

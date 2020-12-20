@@ -5,9 +5,18 @@ import bird
 WIN_WIDTH = 400
 WIN_HEIGHT = 500
 
-LIGHT_BLUE = (64, 128, 255)
-GREEN = (0, 200, 64)
-ORANGE = (255, 150, 100)
+YELLOW = (241, 224, 14)
+ORANGE = (255, 128, 0)
+RED = (236, 19, 19)
+GREEN = (26, 225, 105)
+LIGHT_BLUE = (31, 220, 216)
+BLUE = (22, 48, 228)
+PINK = (255, 0, 128)
+PURPLE = (151, 16, 216)
+
+PASTEL = (229, 229, 229)
+
+COLORS = [YELLOW, ORANGE, RED, GREEN, LIGHT_BLUE, BLUE, PINK, PURPLE]
 
 class Game:
 	def __init__(self):
@@ -20,12 +29,12 @@ class Game:
 		self.image1.fill((0,0,0,0))
 		self.image2 = pygame.Surface((50,50))
 		self.image = self.image1
-		pygame.draw.circle(self.image1, ORANGE, (25,25), 25)
+		pygame.draw.circle(self.image1, BLUE, (25,25), 25) #!!!!!!!!!!!
 		self.image2.fill(ORANGE)
 
 
 	def draw(self):
-		self.sc.fill(LIGHT_BLUE)
+		self.sc.fill(PASTEL)
 		self.page.draw()
 		pygame.display.update()
 
@@ -49,8 +58,9 @@ def main(x=0):
 
 	while 1:
 		
-		game.update()
 		game.draw()
+		game.update()
+		
 
 		
 

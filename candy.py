@@ -1,35 +1,23 @@
 #modules
 import pygame
-import random
-#import death
-
-#colors
-WHITE =(255,255,255)
-BLACK = (0,0,0) 
-GREY = (125, 125, 125)
-LIGHT_BLUE = (64, 128, 255)
-GREEN = (0, 200, 64)
-YELLOW = (225, 225, 0)
-PINK = (230, 50, 230)
-ORANGE = (255, 150, 100)
-
-#parametrs
-WIN_WIDTH = 400
-WIN_HEIGHT = 500
-
-#objects
-
-
-pygame.init()
 
 class candy:
-	def __init__(self, cx, cy, ccolor, r = 10):
+	def __init__(self, cx, cy, ccolor_1, ccolor_2, r1 = 10, r2 = 6):
 		self.x = cx
 		self.y = cy
-		self.r = r
-		self.color = ccolor
+		self.r1 = r1
+		self.r2 = r2
+		self.color_1 = ccolor_1
+		self.color_2 = ccolor_2
 		self.live = 1
 
 	def appear(self, sc):
-		pygame.draw.circle(sc, self.color, (self.x, self.y), self.r)
+		pygame.draw.polygon(sc, self.color_1, [[self.x, self.y], [self.x + 20, self.y + 10], [self.x + 20, self.y - 10]])
+		pygame.draw.polygon(sc, self.color_1, [[self.x, self.y], [self.x - 20, self.y + 10], [self.x - 20, self.y - 10]])
+
+		pygame.draw.polygon(sc, self.color_2, [[self.x, self.y], [self.x + 15, self.y + 8], [self.x + 15, self.y - 8]])
+		pygame.draw.polygon(sc, self.color_2, [[self.x, self.y], [self.x - 15, self.y + 8], [self.x - 15, self.y - 8]])
+
+		pygame.draw.circle(sc, self.color_1, (self.x, self.y), self.r1)
+		pygame.draw.circle(sc, self.color_2, (self.x, self.y), self.r2)
 		
