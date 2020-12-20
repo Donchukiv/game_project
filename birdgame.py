@@ -62,14 +62,17 @@ def main():
 					while 1:
 						sc.fill(WHITE)#window
 						pygame.time.delay(20) #50 FPS
-						game.Check_wall_hit(b, spikes_right, spikes_left, score)
+						game.Hittest(b, spikes_up, spikes_down, spikes_right, spikes_left)
+						game.Death(b, Dead)
+						game.Check_wall_hit(b, spikes_right, spikes_left, score, Dead)
 						spike.Draw_all_spikes(sc, spikes_up, spikes_down, spikes_right, spikes_left)		
 						b.appear()
 						b.move()
 
-						game.Hittest(b, spikes_up, spikes_down, spikes_right, spikes_left)
 						
-						b.death()
+						
+						
+						
 						pygame.display.update()
 
 if __name__ == '__main__':

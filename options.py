@@ -1,6 +1,5 @@
 #modules
 import pygame
-import menu
 
 #colors
 WHITE =(255,255,255)
@@ -29,9 +28,4 @@ class Options(menu):
 
 def main():
 	while 1:
-		for i in pygame.event.get():
-			if i.type == pygame.QUIT:
-				exit() 
-		sc.fill(WHITE)#window
-		pygame.time.delay(20) #50 FPS
 		pass
