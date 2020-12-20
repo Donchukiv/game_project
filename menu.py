@@ -18,88 +18,120 @@ WIN_WIDTH = 400
 WIN_HEIGHT = 500
 
 #objects
-pygame.init()
-sc = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT), pygame.RESIZABLE)
+
+pos = pygame.mouse.get_pos()
+events = []
 
 
-
-class menu:
-	def __init__(self, x, y, text, h=50, w=200, click = False):
+class Menu:
+	def __init__(self, sc, x, y, text, h=50, w=200, click = False):
 		self.x = x
 		self.y = y
 		self.click = click #if button was tapped indicator
 		self.h = h #height
 		self.w = w #width
 		self.text = text
+		self.sc = sc
 
 		# button creation(figure)
-	def create_button(self, x, y, w, h):
-		self.surf = pygame.Surface((h, w))
+	def create_button(self):
+		self.surf = pygame.Surface((self.w, self.h))
 		self.surf.fill(GREEN)
 		self.surf.set_alpha(150)
-		place = self.surf.get_rect(center=(x, y))
-		sc.blit(self.surf, place)
+		place = self.surf.get_rect(center=(self.x, self.y))
+		self.sc.blit(self.surf, place)
 
-	def create_title(self, text, x, y):
+	def create_title(self):
 		text_font = pygame.font.SysFont('arial', 36) #choosing text style
-		self.title = text_font.render(text, 1, (0,0,0)) #rendering text(text, smoothing, color)
-		place = self.title.get_rect(center=(x, y))
-		sc.blit(self.title, place)
+		self.title = text_font.render(self.text, 1, (0,0,0)) #rendering text(text, smoothing, color)
+		place = self.title.get_rect(center=(self.x, self.y))
+		self.sc.blit(self.title, place)
 		
 		#defines clickable square
-	def clickable_square(self, x, y):
-		pos = pygame.mouse.get_pos()
-		if pos[0] >= x-100 and pos[0] <= x+100 and pos[1] <= y+25 and pos[1] >= y-25:
-			return True
+	def clickable_square(self):
+		#pygame.draw.rect(sc, YELLOW, (pos[0] - 100, pos[1] - 25, 200, 50)) #check active square
+		return pos[0] >= self.x-100 and pos[0] <= self.x+100 and pos[1] <= self.y+25 and pos[1] >= self.y-25
 			
-		#check if button was tapped
+		#check if button was pressed
 	def clickbyte(self):
-		for i in pygame.event.get():
+		for i in events:
 			
 			if i.type == pygame.QUIT:
 				pygame.quit()
 				sys.exit()
 			
-			if i.type == pygame.MOUSEBUTTONDOWN and self.clickable_square(self.x, self.y):
+			if i.type == pygame.MOUSEBUTTONDOWN and self.clickable_square():
 				if i.button == 1:
 					self.click = True
 		
-#menu buttons and their coords, titles
-start = menu(200, 100, 'START') #(center x, center y, title)
-options = menu(200, 175, 'OPTIONS')
-exit = menu(200, 250, 'EXIT')
+
 
 #running menu function
 def main():
+	global pos, events
+
+	pygame.init()
+	sc = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT), pygame.RESIZABLE)
+
+	#menu buttons and their coords, titles
+	start = Menu(sc, 200, 100, 'START') #(center x, center y, title)
+	options = Menu(sc, 200, 175, 'OPTIONS')
+	exit = Menu(sc, 200, 250, 'EXIT')
+
 		
 	while 1:
 		sc.fill(LIGHT_BLUE)#window
+		events = pygame.event.get()
 
-		for i in pygame.event.get():
+		for i in events:
 			if i.type == pygame.QUIT:
-				exit()
+				pygame.quit()
 		pygame.time.delay(20) #50 FPS
 
-		start.create_button(start.x, start.y, start.h, start.w)
-		start.create_title(start.text, start.x, start.y)
+		pos = pygame.mouse.get_pos()
+		
+		start.create_button()
+		start.create_title()
 		start.clickbyte()
-		#print(not start.click) -  clickbyte is working!
 
-		options.create_button(options.x, options.y, options.h, options.w)
-		options.create_title(options.text, options.x, options.y)
+		if start.click == True:
+			birdgame.main()
+
+		
+		options.create_button()
+		options.create_title()
 		options.clickbyte()
 
-		exit.create_button(exit.x, exit.y, exit.h, exit.w)
-		exit.create_title(exit.text, exit.x, exit.y)
+		if options.click == True:
+			options.main()
+		
+		
+		exit.create_button()
+		exit.create_title()
 		exit.clickbyte()
 
 		if exit.click == True:
 			pygame.quit()
 			sys.exit()
-		elif options.click == True:
-			options.main()
-		elif start.click == True:
-			birdgame.main()
+
+
+
+
+
+		
+			#pygame.quit()
+			#sys.exit()
+		
+		
+			#exit()
+			#options.main()
+		
+		
+		
+		
+			#birdgame.main()
+
+		#print(options.click)
 
 		pygame.display.update()
 		

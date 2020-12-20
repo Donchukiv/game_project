@@ -4,8 +4,6 @@ import spike
 import bird
 import game
 import sys
-import menu
-from candy import candy
 
 
 #colors
@@ -25,7 +23,7 @@ WIN_WIDTH = 400
 WIN_HEIGHT = 500
 
 #objects
-pygame.init()
+#pygame.init()
 sc = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT), pygame.RESIZABLE)
 
 
@@ -40,16 +38,6 @@ spikes_right = []
 spike.Create_Spikes(spikes_up, spikes_down, spikes_right, spikes_left)
 Dead = []
 score = []
-
-#All for candy
-candyscore = []
-cx = 150
-cy = 150
-ccolor = GREEN
-clive = 1
-game.New_candy()
-
-c = candy(cx, cy, ccolor)
 
 def main():
 
@@ -73,24 +61,17 @@ def main():
 				if i.key == pygame.K_SPACE:
 					while 1:
 						sc.fill(WHITE)#window
-						game.Show_score(score, candyscore, sc)
 						pygame.time.delay(20) #50 FPS
-						game.Hittest(b, spikes_up, spikes_down, spikes_right, spikes_left)
-						game.Death(b, Dead)
-						game.Check_wall_hit(b, spikes_right, spikes_left, score, Dead)
-						spike.Draw_all_spikes(sc, spikes_up, spikes_down, spikes_right, spikes_left)	
-						c.appear(sc)
-						game.Hit_candy(c, b, candyscore)
-						game.Plus_candy(c)
+						game.Check_wall_hit(b, spikes_right, spikes_left, score)
+						spike.Draw_all_spikes(sc, spikes_up, spikes_down, spikes_right, spikes_left)		
 						b.appear()
 						b.move()
-						
-						
-						
+
+						game.Hittest(b, spikes_up, spikes_down, spikes_right, spikes_left)
 						
 						
 						pygame.display.update()
 
 if __name__ == '__main__':
-	main()
+	main()          
 
