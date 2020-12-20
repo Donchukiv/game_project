@@ -1,5 +1,7 @@
 import pygame
 import birdgame
+#import options
+import sys
 
 #colors
 WHITE =(255,255,255)
@@ -44,6 +46,7 @@ class menu:
 		place = self.title.get_rect(center=(x, y))
 		sc.blit(self.title, place)
 		
+		#defines clickable square
 	def clickable_square(self, x, y):
 		pos = pygame.mouse.get_pos()
 		if pos[0] >= x-100 and pos[0] <= x+100 and pos[1] <= y+25 and pos[1] >= y-25:
@@ -52,8 +55,11 @@ class menu:
 		#check if button was tapped
 	def clickbyte(self):
 		for i in pygame.event.get():
+			
 			if i.type == pygame.QUIT:
-				exit()
+				pygame.quit()
+				sys.exit()
+			
 			if i.type == pygame.MOUSEBUTTONDOWN and self.clickable_square(self.x, self.y):
 				if i.button == 1:
 					self.click = True
@@ -87,21 +93,16 @@ def main():
 		exit.create_title(exit.text, exit.x, exit.y)
 		exit.clickbyte()
 
-
-		#почему-то сюда не доходит цикл
 		if exit.click == True:
-			exit()
+			pygame.quit()
+			sys.exit()
 		elif options.click == True:
 			options.main()
-			print(options.click)
 		elif start.click == True:
 			birdgame.main()
-			print(pygame.mouse.get_pos())
 
 		pygame.display.update()
 		
-
-
 
 if __name__ == '__main__':
 	main()

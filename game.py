@@ -2,6 +2,7 @@ import pygame
 import bird
 import spike
 import random
+from menu import menu
 
 pygame.init()
 
@@ -70,6 +71,19 @@ def Death(bird, Dead):
         bird.vy = 0
         Dead.append(1)
 
+#Put score on the screen
+def Show_score(score, sc):
+    text = str(len(score))
+    surf = pygame.Surface((500, 400))
+    surf.fill((255, 255, 255))
+    surf.set_alpha(220)
+    text_font = pygame.font.SysFont('arial', 350) 
+    title = text_font.render(text, 1, (0, 0, 0))
+    place_t = title.get_rect(center=(200, 250))
+    place_s = surf.get_rect(center=(200, 250))
+    sc.blit(title, place_t)
+    sc.blit(surf, place_s)
+    
 
 
     
