@@ -2,7 +2,17 @@ import pygame
 import bird
 import spike
 import random
-from menu import menu
+import candy
+
+#colors
+WHITE =(255,255,255)
+BLACK = (0,0,0) 
+GREY = (125, 125, 125)
+LIGHT_BLUE = (64, 128, 255)
+GREEN = (0, 200, 64)
+YELLOW = (225, 225, 0)
+PINK = (230, 50, 230)
+ORANGE = (255, 150, 100)
 
 pygame.init()
 
@@ -115,16 +125,18 @@ def Hit_candy(candy, bird, candyscore):
             candy.live = 0
 
 #Generates parametres of new candy
-def New_candy(cx, cy, ccolor, clive):
+def New_candy():
+    global cx, cy, ccolor, clive
     cx = random.randint(40, 360)
     cy = random.randint(40, 460)
     ccolor = random.choice([LIGHT_BLUE, GREEN, YELLOW, PINK, ORANGE])
     clive = 1
 
 #Creates new candy
-def Plus_candy(candy, cx, cy, ccolor, clive)
+def Plus_candy(candy):
+    global cx, cy, ccolor, clive
     if candy.live == 0:
-        New_candy(cx, cy, ccolor, clive)
+        New_candy()
         candy.x = cx
         candy.y = cy
         candy.color = ccolor

@@ -19,20 +19,18 @@ WIN_HEIGHT = 500
 
 #objects
 pygame.init()
-sc = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT), pygame.RESIZABLE)
-
 
 
 pygame.init()
 
 class candy:
-	def __init__(self, cx, cy, r = 7, ccolor):
+	def __init__(self, cx, cy, ccolor, r = 10):
 		self.x = cx
 		self.y = cy
 		self.r = r
 		self.color = ccolor
 		self.live = 1
 
-	def appear(self):
+	def appear(self, sc):
 		pygame.draw.circle(sc, self.color, (self.x, self.y), self.r)
 		
