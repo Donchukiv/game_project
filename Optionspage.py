@@ -68,28 +68,42 @@ class Optionspage:
 		self.c2.update()
 		if self.c2.click:
 			self.game.color = ORANGE
+			self.game.image1.fill(self.game.color)
+			self.game.image2.fill(self.game.color)
 			self.c2.click = False
 		self.c3.update()
 		if self.c3.click:
 			self.game.color = RED
+			self.game.image1.fill(self.game.color)
+			self.game.image2.fill(self.game.color)
 			self.c3.click = False
 		self.c4.update()
 		if self.c4.click:
 			self.game.color = GREEN
+			self.game.image1.fill(self.game.color)
+			self.game.image2.fill(self.game.color)
 			self.c4.click = False
 		self.c5.update()
 		if self.c5.click:
 			self.game.color = LIGHT_BLUE
+			self.game.image1.fill(self.game.color)
+			self.game.image2.fill(self.game.color)
 			self.c5.click = False
 		self.c6.update()
 		if self.c6.click:
 			self.game.color = BLUE
+			self.game.image1.fill(self.game.color)
+			self.game.image2.fill(self.game.color)
 			self.c6.click = False
 		self.c7.update()
 		if self.c7.click:
 			self.game.color = PINK
+			self.game.image1.fill(self.game.color)
+			self.game.image2.fill(self.game.color)
 			self.c7.click = False
 		self.c8.update()
 		if self.c8.click:
 			self.game.color = PURPLE
+			self.game.image1.fill(self.game.color)
+			self.game.image2.fill(self.game.color)
 			self.c8.click = False
