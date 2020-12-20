@@ -73,7 +73,7 @@ def main():
 				if i.key == pygame.K_SPACE:
 					while 1:
 						sc.fill(WHITE)#window
-						game.Show_score(score, sc)
+						game.Show_score(score, candyscore, sc)
 						pygame.time.delay(20) #50 FPS
 						game.Hittest(b, spikes_up, spikes_down, spikes_right, spikes_left)
 						game.Death(b, Dead)
