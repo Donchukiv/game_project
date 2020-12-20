@@ -1,5 +1,5 @@
 import pygame
-import birdgame
+# import birdgame
 import sys
 from Optionspage import Optionspage
 from Button import Button
@@ -26,6 +26,9 @@ class Menupage:
 	def update(self):
 		self.start.update()
 		if self.start.click:
+			import importlib
+			import birdgame
+			importlib.reload(birdgame)
 			birdgame.main()
 		self.options.update()
 		if self.options.click:

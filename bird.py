@@ -1,5 +1,6 @@
 #modules
 import pygame
+
 #import death
 
 #colors
@@ -21,11 +22,8 @@ pygame.init()
 sc = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT), pygame.RESIZABLE)
 
 
-
-pygame.init()
-
 class bird:
-	def __init__(self, x, y, r=25, color=ORANGE, vx=10, vy=0, orient = 1, shape = 1):
+	def __init__(self, x, y, r=20, color=ORANGE, vx=8, vy=0, orient = 1, shape = 1):
 		self.x = x
 		self.y = y
 		self.vx = vx
@@ -52,7 +50,7 @@ class bird:
 		#coordinates change
 			self.x = self.x + self.vx
 			self.y = self.y + self.vy
-			self.vy = self.vy + 0.5
+			self.vy = self.vy + 0.8
 			if self.x + self.r >= WIN_WIDTH or self.x - self.r <= 0:
 				self.vx = (-1)*self.vx
 				self.orient = (-1)*self.orient 
@@ -66,5 +64,5 @@ class bird:
                                                 self.vy = -10
 	def death(self):
 		if self.live == 0:
-			#self.death()
-			print('YOU DIED') #- working!
+			pygame.time.delay(1000)
+			self.yyy() 

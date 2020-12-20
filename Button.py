@@ -3,7 +3,7 @@ GREEN = (0, 200, 64)
 
 
 class Button:
-	def __init__(self, game, x, y, text = None, image = None, h=50, w=200, click = False):
+	def __init__(self, game, x, y, text = None, image = None, h=50, w=200, click = False, alpha = 150):
 		self.x = x
 		self.y = y
 		self.click = click #if button was tapped indicator
@@ -14,7 +14,7 @@ class Button:
 		self.game = game
 		self.surf = pygame.Surface((self.w, self.h))
 		self.surf.fill(GREEN)
-		self.surf.set_alpha(150)
+		self.surf.set_alpha(alpha)
 		if text is not None:
 			text_font = pygame.font.SysFont('arial', 36) #choosing text style
 			self.title = text_font.render(self.text, 1, (0,0,0)) #rendering text(text, smoothing, color)

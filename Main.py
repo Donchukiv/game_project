@@ -40,10 +40,12 @@ class Game:
 		self.page.update()
 
 
-def main():
+def main(x=0):
+
 
 	game = Game()
 	bird.bird.game = game
+	bird.bird.yyy = main
 
 	while 1:
 		

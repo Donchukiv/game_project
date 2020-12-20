@@ -4,7 +4,6 @@ import spike
 import bird
 import game
 import sys
-import menu
 from candy import candy
 
 
@@ -84,6 +83,7 @@ def main():
 						game.Plus_candy(c)
 						b.appear()
 						b.move()
+						b.death()
 						
 						
 						pygame.display.update()
