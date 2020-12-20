@@ -12,13 +12,12 @@ PINK = (230, 50, 230)
 ORANGE = (255, 150, 100)
 
 #parametrs
-WIN_WIDTH = 500
-WIN_HEIGHT = 400
+WIN_WIDTH = 400
+WIN_HEIGHT = 500
 
 #objects
 pygame.init()
-sc = pygame.display.set_mode((WIN_HEIGHT, WIN_WIDTH), pygame.RESIZABLE)
-
+sc = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT), pygame.RESIZABLE)
 
 
 
@@ -33,29 +32,34 @@ class menu:
 
 		# button creation(figure)
 	def create_button(self, x, y, w, h):
-		surf = pygame.Surface((h, w))
-		surf.fill(GREEN)
-		surf.set_alpha(150)
-		place = surf.get_rect(center=(x, y))
-		sc.blit(surf, place)
+		self.surf = pygame.Surface((h, w))
+		self.surf.fill(GREEN)
+		self.surf.set_alpha(150)
+		place = self.surf.get_rect(center=(x, y))
+		sc.blit(self.surf, place)
 
 	def create_title(self, text, x, y):
 		text_font = pygame.font.SysFont('arial', 36) #choosing text style
-		title = text_font.render(text, 1, (0,0,0)) #rendering text(text, smoothing, color)
-		place = title.get_rect(center=(x, y))
-		sc.blit(title, place)
-
+		self.title = text_font.render(text, 1, (0,0,0)) #rendering text(text, smoothing, color)
+		place = self.title.get_rect(center=(x, y))
+		sc.blit(self.title, place)
+		
+	def clickable_square(self, x, y):
+		pos = pygame.mouse.get_pos()
+		if pos[0] >= x-100 and pos[0] <= x+100 and pos[1] <= y+25 and pos[1] >= y-25:
+			return True
+			
 		#check if button was tapped
 	def clickbyte(self):
 		for i in pygame.event.get():
 			if i.type == pygame.QUIT:
 				exit()
-			if i.type == pygame.MOUSEBUTTONDOWN:
+			if i.type == pygame.MOUSEBUTTONDOWN and self.clickable_square(self.x, self.y):
 				if i.button == 1:
 					self.click = True
 		
 #menu buttons and their coords, titles
-start = menu(200, 100, 'START')
+start = menu(200, 100, 'START') #(center x, center y, title)
 options = menu(200, 175, 'OPTIONS')
 exit = menu(200, 250, 'EXIT')
 
@@ -91,8 +95,8 @@ def main():
 			options.main()
 			print(options.click)
 		elif start.click == True:
-			#birdgame.main()
-			print(start.click, 'start')
+			birdgame.main()
+			print(pygame.mouse.get_pos())
 
 		pygame.display.update()
 		

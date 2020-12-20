@@ -19,12 +19,13 @@ BLUE = (0, 70, 225)
 
 #parametrs
 FPS = 50
-WIN_WIDTH = 500
-WIN_HEIGHT = 400
+WIN_WIDTH = 400
+WIN_HEIGHT = 500
 
 #objects
 pygame.init()
-sc = pygame.display.set_mode((WIN_HEIGHT, WIN_WIDTH), pygame.RESIZABLE)
+sc = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT), pygame.RESIZABLE)
+
 
 b = bird.bird(40, 80)
 
@@ -35,9 +36,8 @@ spikes_left = []
 spikes_right = []
 
 spike.Create_Spikes(spikes_up, spikes_down, spikes_right, spikes_left)
-Dead = []
-score = []
 
+score = []
 def main():
 
 	while 1:
@@ -73,3 +73,4 @@ def main():
 
 if __name__ == '__main__':
 	main()
+      
