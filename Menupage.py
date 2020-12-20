@@ -14,9 +14,9 @@ aL_BLUE = (175, 255, 255)
 class Menupage:
 	def __init__(self, game):
 		self.game = game
-		self.start = Button(self.game, 200, 125, L_RED, aL_RED, 'START', alpha = 255)
-		self.options = Button(self.game, 200, 250, L_YELLOW, aL_YELLOW, 'OPTIONS', alpha = 255)
-		self.exit = Button(self.game, 200, 375, L_BLUE, aL_BLUE, 'EXIT', alpha = 255)
+		self.start = Button(self.game, 200, 125, L_RED, aL_RED, 'START', w = 135, alpha = 255)
+		self.options = Button(self.game, 200, 250, L_YELLOW, aL_YELLOW, 'OPTIONS', w = 175, alpha = 255)
+		self.exit = Button(self.game, 200, 375, L_BLUE, aL_BLUE, 'EXIT', w = 105, alpha = 255)
 
 
 	def draw(self):
