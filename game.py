@@ -56,6 +56,10 @@ def Choice(score, list_spikes, Need_L):
     else:
         for i in range (len(list_spikes) - 5):
             Need_L.append(LS[i])
+
+
+
+
     
     
 
