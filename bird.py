@@ -36,7 +36,6 @@ class bird:
 		pygame.draw.circle(sc, self.color, (self.x, self.y), self.r)
 
 	def move(self):
-		#while self.live == 1:
 		#coordinates change
 			self.x = self.x + self.vx
 			self.y = self.y + self.vy

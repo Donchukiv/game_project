@@ -33,17 +33,17 @@ class menu:
 
 		# button creation(figure)
 	def create_button(self, x, y, w, h):
-		self.surf = pygame.Surface((h, w))
-		self.surf.fill(GREEN)
-		self.surf.set_alpha(150)
-		place = self.surf.get_rect(center=(x, y))
-		sc.blit(self.surf, place)
+		surf = pygame.Surface((h, w))
+		surf.fill(GREEN)
+		surf.set_alpha(150)
+		place = surf.get_rect(center=(x, y))
+		sc.blit(surf, place)
 
 	def create_title(self, text, x, y):
 		text_font = pygame.font.SysFont('arial', 36) #choosing text style
-		self.title = text_font.render(text, 1, (0,0,0)) #rendering text(text, smoothing, color)
-		place = self.title.get_rect(center=(x, y))
-		sc.blit(self.title, place)
+		title = text_font.render(text, 1, (0,0,0)) #rendering text(text, smoothing, color)
+		place = title.get_rect(center=(x, y))
+		sc.blit(title, place)
 
 		#check if button was tapped
 	def clickbyte(self):

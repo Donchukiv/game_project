@@ -50,13 +50,19 @@ def Choice(score, list_spikes, Need_L):
     for i in range (len(list_spikes)):
         LS.append(i)
     random.shuffle(LS)
-    if len(score) <= (len(list_spikes) - 5):
-        for i in range (len(score)):
+    if (len(score)//5 + 1) <= (len(list_spikes) - 5):
+        for i in range (len(score)//5 + 1):
             Need_L.append(LS[i])
     else:
         for i in range (len(list_spikes) - 5):
             Need_L.append(LS[i])
 
+#When bird dies
+def Death(bird, Dead):
+    if bird.live == 0:
+        bird.vx = 0
+        bird.vy = 0
+        Dead = [1]
 
 
 

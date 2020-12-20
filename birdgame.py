@@ -35,8 +35,9 @@ spikes_left = []
 spikes_right = []
 
 spike.Create_Spikes(spikes_up, spikes_down, spikes_right, spikes_left)
-
+Dead = []
 score = []
+
 def main():
 
 	while 1:
@@ -72,4 +73,3 @@ def main():
 
 if __name__ == '__main__':
 	main()
-      
