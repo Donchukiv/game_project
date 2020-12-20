@@ -69,7 +69,7 @@ def main():
 
 						game.Hittest(b, spikes_up, spikes_down, spikes_right, spikes_left)
 						
-						b.death()
+						
 						pygame.display.update()
 
 if __name__ == '__main__':

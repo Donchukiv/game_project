@@ -45,7 +45,7 @@ class bird:
 			self.x = self.x + self.vx
 			self.y = self.y + self.vy
 			self.vy = self.vy + 1
-			if self.x + self.r >= WIN_HEIGHT or self.x - self.r <= 0:
+			if self.x + self.r >= WIN_WIDTH or self.x - self.r <= 0:
 				self.vx = (-1)*self.vx
 				self.orient = (-1)*self.orient 
 			
