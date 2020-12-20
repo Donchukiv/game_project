@@ -2,7 +2,6 @@
 import pygame
 import spike
 import bird
-import menu
 import game
 import sys
 
@@ -55,7 +54,10 @@ def main():
 		game.Check_wall_hit(b, spikes_right, spikes_left)
 		
 		spike.Draw_all_spikes(sc, spikes_up, spikes_down, spikes_right, spikes_left)
+
+		game.Hittest(b, spikes_up, spikes_down, spikes_right, spikes_left)
 		
+		b.death()
 		pygame.display.update()
 
 
