@@ -1,6 +1,7 @@
 import pygame
 from Menupage import Menupage
 import bird
+import spike
 
 WIN_WIDTH = 400
 WIN_HEIGHT = 500
@@ -22,7 +23,7 @@ class Game:
 	def __init__(self):
 		pygame.init()
 		self.sc = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT), pygame.RESIZABLE)
-		self.page = Menupage(self)
+		self.page = Menupage(self, spike)
 		self.pos = pygame.mouse.get_pos()
 		self.events = []
 		self.image1 = pygame.Surface((50,50), pygame.SRCALPHA)
@@ -30,9 +31,8 @@ class Game:
 		self.image2 = pygame.Surface((50,50))
 		self.image = self.image1
 		self.color = RED
-		pygame.draw.circle(self.image1, self.color, (25,25), 25) #!!!!!!!!!!!
+		pygame.draw.circle(self.image1, self.color, (25,25), 25) 
 		self.image2.fill(self.color)
-
 
 	def draw(self):
 		self.sc.fill(PASTEL)
