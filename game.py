@@ -21,27 +21,42 @@ def Hittest(bird, spikes_up, spikes_down, spikes_right, spikes_left):
             bird.live = 0
             
 #New spikes appear (when bird changes its orientation)
-def Change_spikes(bird, spikes_right, spikes_left):
+def Change_spikes(bird, spikes_right, spikes_left, score):
+    Need_L = []
     if bird.orient == 1:
-        for i in range (len(spikes_right)):
-            spikes_right[i].work = random.choice([True, False])
+        Choice(score, spikes_right, Need_L)            
+        for i in range (len(Need_L)):
+            j = Need_L[i]
+            spikes_right[j].work = True
         for i in range (len(spikes_left)):
             spikes_left[i].work = False
     if bird.orient == -1:
-        for i in range (len(spikes_left)):
-            spikes_left[i].work = random.choice([True, False])
+        Choice(score, spikes_left, Need_L)            
+        for i in range (len(Need_L)):
+            j = Need_L[i]
+            spikes_left[j].work = True
         for i in range (len(spikes_right)):
             spikes_right[i].work = False
 
 #Check if bird hits wall 
-def Check_wall_hit(bird, spikes_right, spikes_left):
+def Check_wall_hit(bird, spikes_right, spikes_left, score):
     if bird.x + bird.r >= 400 or bird.x - bird.r <= 0:
-        Change_spikes(bird, spikes_right, spikes_left)
-
-#dend-game function
-def Death(bird, spikes_right, spikes_left):
-    pass
+        score.append(1)
+        Change_spikes(bird, spikes_right, spikes_left, score)
         
+#Create list of spike's numbers
+def Choice(score, list_spikes, Need_L):
+    LS = []
+    for i in range (len(list_spikes)):
+        LS.append(i)
+    random.shuffle(LS)
+    if len(score) <= (len(list_spikes) - 5):
+        for i in range (len(score)):
+            Need_L.append(LS[i])
+    else:
+        for i in range (len(list_spikes) - 5):
+            Need_L.append(LS[i])
+    
     
 
 

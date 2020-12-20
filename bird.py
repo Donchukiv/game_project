@@ -5,7 +5,7 @@ import pygame
 #colors
 WHITE =(255,255,255)
 BLACK = (0,0,0) 
-GREY = (125, 125, 125)
+GRAY = (125, 125, 125)
 LIGHT_BLUE = (64, 128, 255)
 GREEN = (0, 200, 64)
 YELLOW = (225, 225, 0)
@@ -49,7 +49,7 @@ class bird:
                                 if i.type == pygame.QUIT:
                                         exit()
                                 elif i.type == pygame.KEYDOWN:
-                                        if i.key == pygame.K_SPACE:
+                                        if i.key == pygame.K_UP:
                                                 self.vy = -15
 	def death(self):
 		if self.live == 0:

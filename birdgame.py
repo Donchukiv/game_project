@@ -21,6 +21,7 @@ BLUE = (0, 70, 225)
 FPS = 50
 WIN_WIDTH = 500
 WIN_HEIGHT = 400
+score = []
 
 #objects
 pygame.init()
@@ -38,28 +39,29 @@ spike.Create_Spikes(spikes_up, spikes_down, spikes_right, spikes_left)
 
 
 def main():
+        
+        while 1:
+                sc.fill(WHITE)#window
 
-	while 1:
-		sc.fill(WHITE)#window
-		pygame.time.delay(20) #50 FPS
+                for i in pygame.event.get():
+                        if i.type == pygame.QUIT:
+                                exit()
 
-					
-		b.appear()
-		b.move()
+
+                pygame.time.delay(20) #50 FPS
 		
-		game.Check_wall_hit(b, spikes_right, spikes_left)
+                b.appear()
+                b.move()
 		
-		spike.Draw_all_spikes(sc, spikes_up, spikes_down, spikes_right, spikes_left)
-
-		game.Hittest(b, spikes_up, spikes_down, spikes_right, spikes_left)
+                game.Check_wall_hit(b, spikes_right, spikes_left, score)
 		
-		b.death()
-		pygame.display.update()
+                spike.Draw_all_spikes(sc, spikes_up, spikes_down, spikes_right, spikes_left)
+
+                game.Hittest(b, spikes_up, spikes_down, spikes_right, spikes_left)
+		
+		#b.death()
+                pygame.display.update()
 
 
-for i in pygame.event.get():
-			if i.type == pygame.QUIT:
-				exit()
-			if i.type == pygame.KEYUP:
-				if i.key == pygame.K_SPACE:
-					main()
+if __name__ == '__main__':
+	main()

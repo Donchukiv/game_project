@@ -1,7 +1,7 @@
 import pygame
 pygame.init()
 
-GREY = (125, 125, 125)
+GRAY = (125, 125, 125)
 
 class Spike:
 #Orient - orientation of spike's peak, work - True/False, spike is seen or not.
@@ -14,16 +14,16 @@ class Spike:
 #Draw spike (triangle), (self.x, self.y) - coords of spike's peak
     def draw(self, sc):
         if self.orient == 'up':
-            spike = pygame.draw.polygon(sc, GREY, [[self.x, self.y], [self.x + 20, self.y - 40],
+            spike = pygame.draw.polygon(sc, GRAY, [[self.x, self.y], [self.x + 20, self.y - 40],
                                                     [self.x - 20, self.y - 40]])
         if self.orient == 'down':
-            spike = pygame.draw.polygon(sc, GREY, [[self.x, self.y], [self.x + 20, self.y + 40],
+            spike = pygame.draw.polygon(sc, GRAY, [[self.x, self.y], [self.x + 20, self.y + 40],
                                                      [self.x - 20, self.y + 40]])
         if self.orient == 'left':
-            spike = pygame.draw.polygon(sc, GREY, [[self.x + 40, self.y], [self.x, self.y + 20],
+            spike = pygame.draw.polygon(sc, GRAY, [[self.x + 40, self.y], [self.x, self.y + 20],
                                                      [self.x, self.y - 20]])
         if self.orient == 'right':
-            spike = pygame.draw.polygon(sc, GREY, [[self.x - 40, self.y], [self.x, self.y + 20],
+            spike = pygame.draw.polygon(sc, GRAY, [[self.x - 40, self.y], [self.x, self.y + 20],
                                                      [self.x, self.y - 20]])
 
 #Add spikes into lists (up, down)
