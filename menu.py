@@ -1,4 +1,5 @@
 import pygame
+import birdgame
 
 #colors
 WHITE =(255,255,255)
@@ -49,7 +50,7 @@ class menu:
 		for i in pygame.event.get():
 			if i.type == pygame.QUIT:
 				exit()
-			elif i.type == pygame.MOUSEBUTTONDOWN:
+			if pygame.event.get() == pygame.MOUSEBUTTONDOWN:
 				self.click = True
 		
 #menu buttons and their coords, titles
@@ -80,6 +81,14 @@ def main():
 		exit.create_button(exit.x, exit.y, exit.h, exit.w)
 		exit.create_title(exit.text, exit.x, exit.y)
 		exit.clickbyte()
+
+		if exit.click == True:
+			for i in pygame.event.get():
+				exit()
+		elif options.click == True:
+			options.main()
+		elif start.click == True:
+			birdgame.main()
 
 		pygame.display.update()
 		
