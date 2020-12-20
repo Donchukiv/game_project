@@ -25,7 +25,7 @@ sc = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT), pygame.RESIZABLE)
 pygame.init()
 
 class bird:
-	def __init__(self, x, y, r=25, color=ORANGE, vx=10, vy=0, orient = 1):
+	def __init__(self, x, y, r=25, color=ORANGE, vx=10, vy=0, orient = 1, shape = 1):
 		self.x = x
 		self.y = y
 		self.vx = vx
@@ -35,9 +35,13 @@ class bird:
 		#self.id = pygame.draw.circle(sc, color, (x, y), r)
 		self.live = 1
 		self.orient = orient #orient = 1 => right, orient = -1 => left
+		self.shape = shape #shape = 1 => circle, shape = 2 => square
 
 	def appear(self):
-		pygame.draw.circle(sc, self.color, (self.x, self.y), self.r)
+		if self.shape == 1:
+			pygame.draw.circle(sc, self.color, (self.x, self.y), self.r)
+		if self.shape == 2:
+			pygame.draw.rect(sc, self.color, (self.x - self.r, self.y - self.r), (self.x + self.r, self.y + self.r))
 
 	def move(self):
 		#while self.live == 1:
