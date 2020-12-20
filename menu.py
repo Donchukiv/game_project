@@ -4,7 +4,7 @@ import birdgame
 #colors
 WHITE =(255,255,255)
 BLACK = (0,0,0) 
-GRAY = (125, 125, 125)
+GREY = (125, 125, 125)
 LIGHT_BLUE = (64, 128, 255)
 GREEN = (0, 200, 64)
 YELLOW = (225, 225, 0)
@@ -50,8 +50,9 @@ class menu:
 		for i in pygame.event.get():
 			if i.type == pygame.QUIT:
 				exit()
-			if pygame.event.get() == pygame.MOUSEBUTTONDOWN:
-				self.click = True
+			if i.type == pygame.MOUSEBUTTONDOWN:
+				if i.button == 1:
+					self.click = True
 		
 #menu buttons and their coords, titles
 start = menu(200, 100, 'START')
@@ -85,12 +86,13 @@ def main():
 
 		#почему-то сюда не доходит цикл
 		if exit.click == True:
-			for i in pygame.event.get():
-				exit()
+			exit()
 		elif options.click == True:
 			options.main()
+			print(options.click)
 		elif start.click == True:
-			birdgame.main()
+			#birdgame.main()
+			print(start.click, 'start')
 
 		pygame.display.update()
 		

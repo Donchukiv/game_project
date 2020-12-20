@@ -41,14 +41,9 @@ def main():
 
 	while 1:
 		sc.fill(WHITE)#window
-
-		for i in pygame.event.get():
-			if i.type == pygame.QUIT:
-				exit()
-
-
 		pygame.time.delay(20) #50 FPS
-		
+
+					
 		b.appear()
 		b.move()
 		
@@ -62,5 +57,9 @@ def main():
 		pygame.display.update()
 
 
-if __name__ == '__main__':
-	main()
+for i in pygame.event.get():
+			if i.type == pygame.QUIT:
+				exit()
+			if i.type == pygame.KEYUP:
+				if i.key == pygame.K_SPACE:
+					main()
