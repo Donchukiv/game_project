@@ -100,16 +100,25 @@ def Death(bird, Dead):
         Dead.append(1)
 
 #Put score on the screen
-def Show_score(score, sc):
-    text = str(len(score))
-    surf = pygame.Surface((500, 400))
+def Show_score(score, candyscore, sc):
+    text_s = str(len(score))
+    text_c = 'You\'ve collected ' + str(len(candyscore)) + ' candies!'
+    surf = pygame.Surface((250, 280))
     surf.fill((255, 255, 255))
     surf.set_alpha(220)
+
     text_font = pygame.font.SysFont('arial', 350) 
-    title = text_font.render(text, 1, (0, 0, 0))
+    title = text_font.render(text_s, 1, (0, 0, 0))
+
+    text_font_c = pygame.font.SysFont('arial', 30) 
+    title_c = text_font_c.render(text_c, 1, (255, 0, 0))
+
     place_t = title.get_rect(center=(200, 250))
     place_s = surf.get_rect(center=(200, 250))
+    place_c = title_c.get_rect(center=(200, 420))
+
     sc.blit(title, place_t)
+    sc.blit(title_c, place_c)
     sc.blit(surf, place_s)
     
 #Check if bird hits candy
@@ -127,8 +136,8 @@ def Hit_candy(candy, bird, candyscore):
 #Generates parametres of new candy
 def New_candy():
     global cx, cy, ccolor, clive
-    cx = random.randint(40, 360)
-    cy = random.randint(40, 460)
+    cx = random.randint(60, 340)
+    cy = random.randint(60, 440)
     ccolor = random.choice([LIGHT_BLUE, GREEN, YELLOW, PINK, ORANGE])
     clive = 1
 
