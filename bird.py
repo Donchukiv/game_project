@@ -25,7 +25,7 @@ sc = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT), pygame.RESIZABLE)
 pygame.init()
 
 class bird:
-	def __init__(self, x, y, r=25, color=ORANGE, vx=10, vy=0, orient = 1):
+	def __init__(self, x, y, r=25, color=ORANGE, vx=10, vy=0, orient = 1, shape = 1):
 		self.x = x
 		self.y = y
 		self.vx = vx
@@ -35,16 +35,24 @@ class bird:
 		#self.id = pygame.draw.circle(sc, color, (x, y), r)
 		self.live = 1
 		self.orient = orient #orient = 1 => right, orient = -1 => left
+		self.shape = shape #shape = 1 => circle, shape = 2 => square
 
 	def appear(self):
-		pygame.draw.circle(sc, self.color, (self.x, self.y), self.r)
+		'''
+		if self.shape == 1:
+			pygame.draw.circle(sc, self.color, (self.x, self.y), self.r)
+		if self.shape == 2:
+			pygame.draw.rect(sc, self.color, (self.x - self.r, self.y - self.r), (self.x + self.r, self.y + self.r))
+			'''
+		sc.blit(self.game.image, (self.x - self.r, self.y - self.r, self.x + self.r, self.y + self.r))
+
 
 	def move(self):
 		#while self.live == 1:
 		#coordinates change
 			self.x = self.x + self.vx
 			self.y = self.y + self.vy
-			self.vy = self.vy + 1
+			self.vy = self.vy + 0.5
 			if self.x + self.r >= WIN_WIDTH or self.x - self.r <= 0:
 				self.vx = (-1)*self.vx
 				self.orient = (-1)*self.orient 
@@ -55,7 +63,7 @@ class bird:
                                         exit()
                                 elif i.type == pygame.KEYDOWN:
                                         if i.key == pygame.K_SPACE:
-                                                self.vy = -15
+                                                self.vy = -10
 	def death(self):
 		if self.live == 0:
 			#self.death()

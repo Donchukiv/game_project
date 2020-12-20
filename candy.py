@@ -18,7 +18,6 @@ WIN_WIDTH = 400
 WIN_HEIGHT = 500
 
 #objects
-pygame.init()
 
 
 pygame.init()

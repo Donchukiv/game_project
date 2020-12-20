@@ -18,12 +18,12 @@ WIN_HEIGHT = 500
 
 #objects
 pygame.init()
-sc1 = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT), pygame.RESIZABLE)
+sc1 = menu.sc
 
 
 class Options(menu.Menu):
-	def __init__(self, x, y, h=100, w=100, click=False):
-		super().__init__(sc, x, y, h, w, click)
+	def __init__(self, sc, x, y, h=100, w=100, click=False):
+		super().__init__(x, y, h, w, click)
 		self.sc = sc1
 
 		'''
@@ -39,8 +39,8 @@ class Options:
 
 
 #initiallizing button
-kvadrat = Options(150, 350)
-krug = Options(250, 350)
+kvadrat = Options(sc1, 150, 350)
+krug = Options(sc1, 250, 350)
 
 def main():
 	while 1:
