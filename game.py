@@ -102,10 +102,33 @@ def Show_score(score, sc):
     sc.blit(title, place_t)
     sc.blit(surf, place_s)
     
+#Check if bird hits candy
+def Hit_candy(candy, bird, candyscore):
+    if bird.shape == 1:
+        if (candy.x - bird.x)**2 + (candy.y - bird.y)**2 <= (bird.r + candy.r)**2:
+            candyscore.append(1)
+            candy.live = 0
 
+    if bird.shape == 2:
+        if candy.x <= bird.x + bird.r and candy.x >= bird.x - bird.r and candy.y <= bird.y + bird.r and candy.y >= bird.y - bird.r:
+            candyscore.append(1)
+            candy.live = 0
 
-    
-    
+#Generates parametres of new candy
+def New_candy(cx, cy, ccolor, clive):
+    cx = random.randint(40, 360)
+    cy = random.randint(40, 460)
+    ccolor = random.choice([LIGHT_BLUE, GREEN, YELLOW, PINK, ORANGE])
+    clive = 1
+
+#Creates new candy
+def Plus_candy(candy, cx, cy, ccolor, clive)
+    if candy.live == 0:
+        New_candy(cx, cy, ccolor, clive)
+        candy.x = cx
+        candy.y = cy
+        candy.color = ccolor
+        candy.live = 1
 
 
     
